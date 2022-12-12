@@ -94,6 +94,7 @@
         success_symbol = "[λ](bold #f8f8f2)";
         error_symbol = "[λ](bold #ff5555)";
       };
+      gcloud.disabled = true;
     };
   };
 
