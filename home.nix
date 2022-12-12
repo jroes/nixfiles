@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jroes";
-  home.homeDirectory = "/home/jroes";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -56,5 +56,50 @@
     extraConfig = ''
       set -g mouse on
     '';
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    history.extended = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git-extras"
+        "git"
+        "github"
+        "ssh-agent"
+      ];
+    };
+    initExtra = ''
+      ${builtins.readFile ~/.work_settings.sh}
+    '';
+  };
+  
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      aws.style = "bold #ffb86c";
+      cmd_duration.style = "bold #f1fa8c";
+      directory.style = "bold #50fa7b";
+      hostname.style = "bold #ff5555";
+      git_branch.style = "bold #ff79c6";
+      git_status.style = "bold #ff5555";
+      username = {
+        format = "[$user]($style) on ";
+        style_user = "bold #bd93f9";
+      };
+      character = {
+        success_symbol = "[λ](bold #f8f8f2)";
+        error_symbol = "[λ](bold #ff5555)";
+      };
+    };
+  };
+
+  home.file.".config/alacritty".source = ./alacritty;
+
+  home.sessionVariables = {
+    EDITOR = "vim";
   };
 }
