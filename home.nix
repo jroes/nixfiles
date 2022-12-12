@@ -21,6 +21,7 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.tree
+    pkgs.gh
   ];
 
   # Let Home Manager install and manage itself.
