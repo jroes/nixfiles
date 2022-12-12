@@ -98,6 +98,13 @@
     };
   };
 
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      pull.ff = "only";
+    };
+  };
+
   home.file.".config/alacritty".source = ./alacritty;
 
   home.sessionVariables = {

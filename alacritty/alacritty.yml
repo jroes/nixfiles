@@ -17,3 +17,6 @@ font:
 
   # Point size
   size: 18.0
+
+env:
+  TERM: screen-256color
