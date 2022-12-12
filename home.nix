@@ -101,7 +101,7 @@
   programs.git = {
     enable = true;
     extraConfig = {
-      pull.ff = "only";
+      pull.rebase = true;
     };
   };
 
