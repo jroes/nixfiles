@@ -71,9 +71,9 @@
         "ssh-agent"
       ];
     };
-    initExtra = ''
+    initExtra = if builtins.pathExists ~/.work_settings.sh then ''
       ${builtins.readFile ~/.work_settings.sh}
-    '';
+    '' else "";
   };
   
   programs.starship = {
