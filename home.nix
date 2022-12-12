@@ -40,6 +40,7 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
+    keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank
