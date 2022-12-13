@@ -18,7 +18,6 @@
 
   home.packages = [
     pkgs.jq
-    pkgs.fzf
     pkgs.ripgrep
     pkgs.tree
     pkgs.gh
@@ -47,8 +46,9 @@
       {
         plugin = dracula;
         extraConfig = ''
-          set -g @dracula-show-battery false
+          set -g @dracula-plugins "cpu-usage ram-usage weather"
           set -g @dracula-show-powerline true
+          set -g @dracula-show-location false
           set -g @dracula-refresh-rate 10
         '';
       }
@@ -62,6 +62,7 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
+    enableCompletion = true;
     history.extended = true;
     oh-my-zsh = {
       enable = true;
@@ -104,6 +105,16 @@
     extraConfig = {
       pull.rebase = true;
     };
+  };
+  
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = false;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   home.file.".config/alacritty".source = ./alacritty;
