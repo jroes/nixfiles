@@ -17,6 +17,7 @@
   home.stateVersion = "22.11";
 
   home.packages = [
+    pkgs.python3
     pkgs.jq
     pkgs.ripgrep
     pkgs.tree
@@ -73,9 +74,14 @@
         "ssh-agent"
       ];
     };
-    initExtra = if builtins.pathExists ~/.work_settings.sh then ''
-      ${builtins.readFile ~/.work_settings.sh}
-    '' else "";
+    shellAliases = {
+      hs = "home-manager switch";
+    };
+    initExtra = ''
+      if [ -f ~/work_settings.sh ]; then
+        source ~/.work_settings.sh
+      fi
+    '';
   };
   
   programs.starship = {
@@ -118,6 +124,7 @@
   };
 
   home.file.".config/alacritty".source = ./alacritty;
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim";
 
   home.sessionVariables = {
     EDITOR = "vim";
