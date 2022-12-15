@@ -19,4 +19,4 @@ font:
   size: 18.0
 
 env:
-  TERM: screen-256color
+  TERM: xterm-256color

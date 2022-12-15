@@ -18,10 +18,17 @@
 
   home.packages = [
     pkgs.python3
+    pkgs.nodejs-16_x
+    pkgs.nodePackages.prettier
+    pkgs.python3Packages.flake8
+    pkgs.stylua
+    pkgs.google-java-format
+    pkgs.wget
     pkgs.jq
     pkgs.ripgrep
     pkgs.tree
     pkgs.gh
+    pkgs.pre-commit
   ];
 
   # Let Home Manager install and manage itself.
@@ -32,9 +39,6 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    plugins = [
-      pkgs.vimPlugins.vim-nix
-    ];
   };
 
   programs.tmux = {
@@ -57,6 +61,7 @@
 
     extraConfig = ''
       set -g mouse on
+      set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
   };
 
@@ -115,7 +120,7 @@
   
   programs.direnv = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
   };
 
   programs.fzf = {
