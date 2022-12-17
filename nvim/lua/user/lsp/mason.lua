@@ -10,6 +10,7 @@ local servers = {
 }
 
 local settings = {
+  PATH = "prepend",
 	ui = {
 		border = "none",
 		icons = {

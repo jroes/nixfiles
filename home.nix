@@ -21,8 +21,9 @@
     pkgs.nodejs-16_x
     pkgs.nodePackages.prettier
     pkgs.python3Packages.flake8
-    pkgs.stylua
     pkgs.google-java-format
+    pkgs.stylua
+    pkgs.sumneko-lua-language-server
     pkgs.wget
     pkgs.jq
     pkgs.ripgrep
