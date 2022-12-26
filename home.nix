@@ -17,19 +17,21 @@
   home.stateVersion = "22.11";
 
   home.packages = [
-    pkgs.python3
+    pkgs.gcc
+    pkgs.gh
+    pkgs.google-java-format
+    pkgs.jq
     pkgs.nodejs-16_x
     pkgs.nodePackages.prettier
+    pkgs.pre-commit
+    pkgs.python3
     pkgs.python3Packages.flake8
-    pkgs.google-java-format
+    pkgs.ripgrep
     pkgs.stylua
     pkgs.sumneko-lua-language-server
-    pkgs.wget
-    pkgs.jq
-    pkgs.ripgrep
     pkgs.tree
-    pkgs.gh
-    pkgs.pre-commit
+    pkgs.tree-sitter
+    pkgs.wget
   ];
 
   # Let Home Manager install and manage itself.
@@ -40,6 +42,40 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
+    extraConfig = ''
+      lua <<EOF
+
+      local status, ts_install = pcall(require, "nvim-treesitter.install")
+        if(status) then
+          ts_install.compilers = { "${pkgs.gcc}/bin/gcc" }
+        end
+
+      require "user.impatient"
+      require "user.options"
+      require "user.keymaps"
+      require "user.plugins"
+      require "user.autocommands"
+      require "user.colorscheme"
+      require "user.cmp"
+      require "user.telescope"
+      require "user.gitsigns"
+      require "user.treesitter"
+      require "user.autopairs"
+      require "user.comment"
+      require "user.nvim-tree"
+      require "user.bufferline"
+      require "user.lualine"
+      require "user.toggleterm"
+      require "user.project"
+      require "user.illuminate"
+      require "user.indentline"
+      require "user.alpha"
+      require "user.lsp"
+      require "user.dap"
+      require "user.whichkey"
+
+      EOF
+    '';
   };
 
   programs.tmux = {
@@ -130,7 +166,8 @@
   };
 
   home.file.".config/alacritty".source = ./alacritty;
-  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim";
+  home.file.".config/nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim/lua";
+  home.file.".config/nvim/plugins".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim/plugins";
 
   home.sessionVariables = {
     EDITOR = "vim";

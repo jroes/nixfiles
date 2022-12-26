@@ -3,6 +3,6 @@ if not status_ok then
   return
 end
 
-local setup = {
+which_key.setup({
   triggers = "auto", -- automatically setup triggers
-}
+})
