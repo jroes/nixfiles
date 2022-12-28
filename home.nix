@@ -20,6 +20,7 @@
     pkgs.gcc
     pkgs.gh
     pkgs.google-java-format
+    pkgs.htop
     pkgs.jq
     pkgs.nodejs-16_x
     pkgs.nodePackages.prettier
@@ -32,6 +33,7 @@
     pkgs.tree
     pkgs.tree-sitter
     pkgs.wget
+    pkgs.whois
   ];
 
   # Let Home Manager install and manage itself.
@@ -150,6 +152,8 @@
 
   programs.git = {
     enable = true;
+    userName = "Jon Roes";
+    userEmail = "jroes@jroes.net";
     extraConfig = {
       pull.rebase = true;
     };

@@ -103,6 +103,9 @@ return packer.startup(function(use)
   use { "rcarriga/nvim-dap-ui", commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13" }
   use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
 
+  -- Syntax highlighting for nix
+  use { "LnL7/vim-nix", commit = "7d23e97d13c40fcc6d603b291fe9b6e5f92516ee" }
+
   -- Lua
   use { "folke/which-key.nvim" }
   -- Automatically set up your configuration after cloning packer.nvim
