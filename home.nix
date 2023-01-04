@@ -34,6 +34,7 @@
     pkgs.tree-sitter
     pkgs.wget
     pkgs.whois
+    pkgs.sshfs
   ];
 
   # Let Home Manager install and manage itself.
@@ -122,7 +123,7 @@
       hs = "home-manager switch";
     };
     initExtra = ''
-      if [ -f ~/work_settings.sh ]; then
+      if [ -f ~/.work_settings.sh ]; then
         source ~/.work_settings.sh
       fi
     '';
