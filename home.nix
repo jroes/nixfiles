@@ -17,6 +17,8 @@
   home.stateVersion = "22.11";
 
   home.packages = [
+    pkgs.black
+    pkgs.cargo
     pkgs.gcc
     pkgs.gh
     pkgs.google-java-format
@@ -27,7 +29,9 @@
     pkgs.pre-commit
     pkgs.python3
     pkgs.python3Packages.flake8
+    pkgs.poetry
     pkgs.ripgrep
+    pkgs.rustc
     pkgs.stylua
     pkgs.sumneko-lua-language-server
     pkgs.tree
@@ -76,6 +80,7 @@
       require "user.lsp"
       require "user.dap"
       require "user.whichkey"
+      require "user.copilot"
 
       EOF
     '';

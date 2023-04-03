@@ -106,8 +106,12 @@ return packer.startup(function(use)
   -- Syntax highlighting for nix
   use { "LnL7/vim-nix", commit = "7d23e97d13c40fcc6d603b291fe9b6e5f92516ee" }
 
-  -- Lua
+  -- Tells you which keys do what
   use { "folke/which-key.nvim" }
+  
+  -- GitHub Copilot
+  use { "github/copilot.vim", commit = "324ec9eb69e20971b58340d0096c3caac7bc2089" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
