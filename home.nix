@@ -24,6 +24,7 @@
     pkgs.google-java-format
     pkgs.htop
     pkgs.jq
+    pkgs.lazygit
     pkgs.nodejs-16_x
     pkgs.nodePackages.prettier
     pkgs.pre-commit
