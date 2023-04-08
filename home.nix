@@ -29,6 +29,7 @@
     pkgs.pre-commit
     pkgs.python3
     pkgs.python3Packages.flake8
+    pkgs.python3Packages.pipx
     pkgs.poetry
     pkgs.ripgrep
     pkgs.rustc
@@ -39,6 +40,7 @@
     pkgs.wget
     pkgs.whois
     pkgs.sshfs
+    pkgs.yarn
   ];
 
   # Let Home Manager install and manage itself.
