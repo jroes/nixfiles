@@ -110,6 +110,8 @@
     extraConfig = ''
       set -g mouse on
       set-option -sa terminal-overrides ',xterm-256color:RGB'
+      set -g set-clipboard on
+      set -ag terminal-overrides "vte*:XT:Ms=\\E]52;c;%p2%s\\7,xterm*:XT:Ms=\\E]52;c;%p2%s\\7"
     '';
   };
 
