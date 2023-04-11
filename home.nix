@@ -185,6 +185,7 @@
   home.file.".config/nvim/plugins".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim/plugins";
 
   home.sessionVariables = {
+    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
     EDITOR = "vim";
   };
 }
