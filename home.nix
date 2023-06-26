@@ -19,6 +19,8 @@
   home.packages = [
     pkgs.black
     pkgs.cargo
+    pkgs.docker
+    pkgs.ffmpeg
     pkgs.gcc
     pkgs.gh
     pkgs.google-java-format
@@ -27,12 +29,16 @@
     pkgs.lazygit
     pkgs.nodejs-16_x
     pkgs.nodePackages.prettier
+    pkgs.libopus
+    pkgs.libsndfile
     pkgs.pre-commit
     pkgs.python3
     pkgs.python3Packages.flake8
     pkgs.python3Packages.pipx
+    pkgs.python3Packages.soundfile
     pkgs.poetry
     pkgs.ripgrep
+    pkgs.ruff
     pkgs.rustc
     pkgs.stylua
     pkgs.sumneko-lua-language-server
@@ -130,7 +136,7 @@
       ];
     };
     shellAliases = {
-      hs = "home-manager switch";
+      hs = "LD_LIBRARY_PATH='' home-manager switch";
     };
     initExtra = ''
       if [ -f ~/.work_settings.sh ]; then
@@ -185,7 +191,9 @@
   home.file.".config/nvim/plugins".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/nvim/plugins";
 
   home.sessionVariables = {
-    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
+    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/:/usr/lib/x86_64-linux-gnu";
     EDITOR = "vim";
+    FLYCTL_INSTALL = "${config.home.homeDirectory}/.fly";
+    PATH = "$FLYCTL_INSTALL/bin:$PATH";
   };
 }

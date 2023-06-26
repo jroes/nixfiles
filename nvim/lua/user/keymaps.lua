@@ -87,3 +87,7 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 vim.keymap.set('n', '<leader>c', '<Plug>OSCYankOperator')
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set('v', '<leader>c', '<Plug>OSCYankVisual')
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
+keymap('i', '<C-i>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
